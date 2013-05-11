@@ -3,6 +3,7 @@
 ```bash
 EMACSDIR=${EMACSDIR:-~/.emacs.d}
 git clone --recursive https://github.com/yangg/emacs.d.git $EMACSDIR
+# clean up
 cd $EMACSDIR
 echo "GNU Emacs" >> .git/modules/tomorrow-theme/info/sparse-checkout
 cd tomorrow-theme
