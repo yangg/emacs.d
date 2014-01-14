@@ -1,8 +1,7 @@
 ## Installation
 
 ```bash
-EMACSDIR=${EMACSDIR:-~/.emacs.d}
-git clone --recursive https://github.com/yangg/emacs.d.git $EMACSDIR
+git clone --recursive https://github.com/yangg/emacs.d.git ${EMACSDIR:=~/.emacs.d}
 # clean up
 cd $EMACSDIR
 echo "GNU Emacs" >> .git/modules/tomorrow-theme/info/sparse-checkout

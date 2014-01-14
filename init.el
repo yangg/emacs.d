@@ -115,19 +115,14 @@
 (global-set-key [remap list-buffers] 'ibuffer)
 
 ;; redo+
-(autoload 'redo+ "redo+" "Redo/undo system")
+(require 'redo+)
 (global-set-key (kbd "C-?") 'redo)
 
-(autoload 'zencoding-mode "zencoding-mode" "Unflod CSS-selector-like expressions to markup" t)
-(add-hook 'sgml-mode-hook 'zencoding-mode)
+(autoload 'emmet-mode "emmet-mode" "Unflod CSS-selector-like expressions to markup" t)
+(add-hook 'sgml-mode-hook 'emmet-mode)
 
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|mkd\\|markdown\\)\\'" . markdown-mode))
-
-(autoload 'php-mode "php-mode" "Major mode for editing PHP code" t)
-(add-hook 'php-mode-hook '(lambda ()
-                            (setq comment-start "//" comment-end "")))
-(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
 (autoload 'web-mode "web-mode"
   "An autonomous emacs major-mode for editing web templates: HTML documents embedding CSS / JavaScript and Server blocks" t)
@@ -135,7 +130,13 @@
 (setq web-mode-markup-indent-offset tab-width
       web-mode-css-indent-offset tab-width
       web-mode-code-indent-offset tab-width)
-(add-hook 'web-mode-hook 'zencoding-mode)
+(add-hook 'web-mode-hook 'emmet-mode)
+
+(autoload 'php-mode "php-mode" "Major mode for editing PHP code" t)
+(add-hook 'php-mode-hook '(lambda ()
+                            (setq comment-start "//" comment-end "")))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+(add-to-list 'auto-mode-alist '("/views/.*\\.php\\'" . web-mode))
 
 ;; recent
 ;; (require 'recentf)
@@ -143,7 +144,7 @@
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
 ;; theme
-(require 'tomorrow-night-eighties-theme)
+(require 'tomorrow-night-eighties-theme nil t)
 
 (require 'server)
 (unless (server-running-p)
@@ -207,11 +208,14 @@
      (message "%s line(s) yanked" 1)
      (list (line-beginning-position) (line-beginning-position 2)))))
 
+(unless (fboundp 'cl-flet)
+  (require 'cl)
+  (defalias 'cl-flet 'flet))
 (defadvice save-buffers-kill-emacs (around no-y-or-n activate)
   "prevent emacs asking 'Modified buffers exists; exit anyway?'"
   (cl-flet ((yes-or-no-p (&rest args) t)
-         (y-or-n-p (&rest args) t))
-    ad-do-it))
+            (y-or-n-p (&rest args) t))
+           ad-do-it))
 
 
 (if (file-readable-p "~/.emacs.local")

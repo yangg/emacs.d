@@ -1,9 +1,9 @@
 [submodule "redo-plus"]
 	path = redo-plus
 	url = https://github.com/emacsmirror/redo-plus.git
-[submodule "zencoding"]
-	path = zencoding
-	url = https://github.com/smihica/zencoding.git
+[submodule "emmet-mode"]
+	path = emmet-mode
+	url = https://github.com/smihica/emmet-mode.git
 [submodule "markdown-mode"]
 	path = markdown-mode
 	url = https://github.com/defunkt/markdown-mode.git
