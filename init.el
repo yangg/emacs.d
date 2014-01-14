@@ -3,7 +3,7 @@
   (let ((file (concat user-emacs-directory filename)))
     (if (equal filename "tomorrow-theme")
         (setq file (concat file "/GNU Emacs")))
-    (and (not (member filename '("." ".." "auto-save-list" "eshell")))
+    (and (not (member filename '("." ".." ".git" "auto-save-list" "eshell")))
          (file-directory-p file)
          (add-to-list 'load-path file))))
 
@@ -130,7 +130,14 @@
 (setq web-mode-markup-indent-offset tab-width
       web-mode-css-indent-offset tab-width
       web-mode-code-indent-offset tab-width)
+(setq web-mode-style-padding 0
+      web-mode-script-padding 0)
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-enable-block-face t)
 (add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'web-mode-hook '(lambda()
+                            (set-face-attribute 'web-mode-current-element-highlight-face nil :background "#222222")
+                            (set-face-attribute 'web-mode-block-face nil :background "#393939")))
 
 (autoload 'php-mode "php-mode" "Major mode for editing PHP code" t)
 (add-hook 'php-mode-hook '(lambda ()
