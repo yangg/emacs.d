@@ -16,3 +16,6 @@
 [submodule "tomorrow-theme"]
 	path = tomorrow-theme
 	url = https://github.com/chriskempson/tomorrow-theme.git
+[submodule "finder-mode"]
+	path = finder-mode
+	url = https://github.com/yangg/finder-mode.git

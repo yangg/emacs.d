@@ -118,11 +118,16 @@
 (require 'redo+)
 (global-set-key (kbd "C-?") 'redo)
 
+;; recent
+;; (require 'recentf)
+(recentf-mode t)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
 (autoload 'emmet-mode "emmet-mode" "Unflod CSS-selector-like expressions to markup" t)
 (add-hook 'sgml-mode-hook 'emmet-mode)
 
-(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.\\(md\\|mkd\\|markdown\\)\\'" . markdown-mode))
+(autoload 'gfm-mode "markdown-mode" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.\\(md\\|mkd\\|markdown\\)\\'" . gfm-mode))
 
 (autoload 'web-mode "web-mode"
   "An autonomous emacs major-mode for editing web templates: HTML documents embedding CSS / JavaScript and Server blocks" t)
@@ -145,10 +150,8 @@
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("/views/.*\\.php\\'" . web-mode))
 
-;; recent
-;; (require 'recentf)
-(recentf-mode t)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+(autoload 'finder-mode "finder-mode" "Find files in project" t)
+(global-set-key "\C-xf" 'finder-mode)
 
 ;; theme
 (require 'tomorrow-night-eighties-theme nil t)
