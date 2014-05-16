@@ -19,3 +19,6 @@
 [submodule "finder-mode"]
 	path = finder-mode
 	url = https://github.com/yangg/finder-mode.git
+[submodule "less-css-mode"]
+	path = less-css-mode
+	url = https://github.com/purcell/less-css-mode.git

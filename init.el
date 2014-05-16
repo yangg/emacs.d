@@ -129,6 +129,9 @@
 (autoload 'gfm-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|mkd\\|markdown\\)\\'" . gfm-mode))
 
+(autoload 'less-css-mode "less-css-mode" "Major mode for editing less files" t)
+(add-to-list 'auto-mode-alist '("\\.less\\'" . less-css-mode))
+
 (autoload 'web-mode "web-mode"
   "An autonomous emacs major-mode for editing web templates: HTML documents embedding CSS / JavaScript and Server blocks" t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
