@@ -53,7 +53,7 @@
 (setq line-move-visual nil)
 ;; (setq frame-title-format "%b - %F")
 (setq frame-title-format '(buffer-file-name "%f"))
-(setq default-frame-alist '((height . 38) (width . 110)))
+(setq default-frame-alist '((height . 45) (width . 130)))
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)  ; for aquamacs
 (setq default-major-mode 'text-mode)
@@ -118,6 +118,8 @@
 (require 'redo+)
 (global-set-key (kbd "C-?") 'redo)
 
+(require 'editorconfig)
+
 ;; recent
 ;; (require 'recentf)
 (recentf-mode t)
@@ -129,8 +131,11 @@
 (autoload 'gfm-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|mkd\\|markdown\\)\\'" . gfm-mode))
 
-(autoload 'less-css-mode "less-css-mode" "Major mode for editing less files" t)
+(autoload 'less-css-mode "less-css-mode" "Major mode for editing Less files" t)
 (add-to-list 'auto-mode-alist '("\\.less\\'" . less-css-mode))
+
+(autoload 'scss-mode "scss-mode" "Major mode for editing SCSS files" t)
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 (autoload 'web-mode "web-mode"
   "An autonomous emacs major-mode for editing web templates: HTML documents embedding CSS / JavaScript and Server blocks" t)
@@ -152,6 +157,10 @@
                             (setq comment-start "//" comment-end "")))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("/views/.*\\.php\\'" . web-mode))
+
+(when (file-exists-p "/usr/local/go/misc/emacs")
+  (add-to-list 'load-path "/usr/local/go/misc/emacs")
+  (require 'go-mode-load))
 
 (autoload 'finder-mode "finder-mode" "Find files in project" t)
 (global-set-key "\C-xf" 'finder-mode)
