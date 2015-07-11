@@ -28,3 +28,6 @@
 [submodule "scss-mode"]
 	path = scss-mode
 	url = https://github.com/antonj/scss-mode.git
+[submodule "js2-mode"]
+	path = js2-mode
+	url = https://github.com/mooz/js2-mode

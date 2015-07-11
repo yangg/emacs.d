@@ -137,6 +137,10 @@
 (autoload 'scss-mode "scss-mode" "Major mode for editing SCSS files" t)
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
+(autoload 'js2-mode "js2-mode" "Improved JavaScript editing mode" t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
 (autoload 'web-mode "web-mode"
   "An autonomous emacs major-mode for editing web templates: HTML documents embedding CSS / JavaScript and Server blocks" t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
