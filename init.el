@@ -114,11 +114,17 @@
 (require 'ibuffer)
 (global-set-key [remap list-buffers] 'ibuffer)
 
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 ;; redo+
 (require 'redo+)
 (global-set-key (kbd "C-?") 'redo)
 
 (require 'editorconfig)
+
+(require 'vim-modeline)
+(add-to-list 'find-file-hook 'vim-modeline/do)
 
 ;; recent
 ;; (require 'recentf)
